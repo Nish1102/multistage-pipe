@@ -1,9 +1,6 @@
 pipeline {
     agent {
-        docker {
-            image 'nish1102/gitprofile:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
+        label 'docker'
     }
     stages {
         stage('Check Docker') {
@@ -11,15 +8,6 @@ pipeline {
                 script {
                     // Check Docker installation
                     sh 'docker --version'
-                }
-            }
-        }
-
-        stage('Install Docker') {
-            steps {
-                script {
-                    // Install Docker
-                    sh 'apk --update add docker'
                 }
             }
         }
@@ -48,4 +36,5 @@ pipeline {
         }
     }
 }
+
 
