@@ -15,6 +15,15 @@ pipeline {
             }
         }
 
+        stage('Install Docker') {
+            steps {
+                script {
+                    // Install Docker
+                    sh 'apk --update add docker'
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Building the project...'
@@ -39,3 +48,4 @@ pipeline {
         }
     }
 }
+
