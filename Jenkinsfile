@@ -50,11 +50,14 @@ pipeline {
                     // Save the container ID for later cleanup
                     env.CONTAINER_ID = it.id
                 }
-                docker.image('nish1102/gitprofile:latest').inside("--entrypoint=''") {
-                    sh "docker stop ${env.CONTAINER_ID}"
-                    sh "docker rm ${env.CONTAINER_ID}"
-                }
+                // Additional debugging information
+                sh 'docker version'
+                sh 'docker info'
+                sh 'which docker'
+                sh 'docker images'
+                sh 'docker ps -a'
             }
         }
     }
 }
+
