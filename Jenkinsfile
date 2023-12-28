@@ -23,8 +23,10 @@ pipeline {
             steps {
                 echo 'Deploying the project...'
                 // Add your actual deployment commands here
+
+                // Run the Docker container and expose it on port 45
+                sh 'docker run -p 45:80 -d nish1102/gitprofile:latest'
             }
         }
     }
 }
-
