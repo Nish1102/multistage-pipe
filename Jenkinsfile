@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     // Run the container locally on port 45
-                    def containerId = docker.image('nish1102/gitprofile:latest').run('-p 45:80 --name my-container -d')
+                    def containerId = docker.image('nish1102/gitprofile:latest').run("-p 45:80 --name my-container -d")
                     // Save the container ID for later cleanup
                     env.CONTAINER_ID = containerId
                 }
@@ -46,10 +46,9 @@ pipeline {
             // Cleanup stage
             script {
                 // Stop and remove the container
-                docker.image('nish1102/gitprofile:latest').withRun("-p 45:80 --name my-container -d") {
-                    // Save the container ID for later cleanup
-                    env.CONTAINER_ID = it.id
-                }
+                sh "docker stop ${env.CONTAINER_ID}"
+                sh "docker rm ${env.CONTAINER_ID}"
+
                 // Additional debugging information
                 sh 'docker version'
                 sh 'docker info'
@@ -60,4 +59,3 @@ pipeline {
         }
     }
 }
-
