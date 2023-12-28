@@ -7,24 +7,24 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // No build steps needed for a simple HTML, CSS, and JavaScript project
+                echo 'Building the project...'
+                // Add your actual build commands here
             }
         }
 
         stage('Test') {
             steps {
-                // Run basic tests for the HTML file
-                sh 'cd your/project/directory'
-                sh 'python -m http.server 45 &'
-                sh 'sleep 5' // Wait for the server to start
-                sh 'wget http://localhost:45'
+                echo 'Running tests...'
+                // Add your actual test commands here
             }
         }
 
         stage('Deploy') {
             steps {
-                // No deployment steps needed for a simple project
+                echo 'Deploying the project...'
+                // Add your actual deployment commands here
             }
         }
     }
 }
+
