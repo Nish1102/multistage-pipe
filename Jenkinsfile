@@ -30,7 +30,7 @@ pipeline {
                 echo 'Deploying the project...'
                 
                 // Run the Docker container and expose it on port 45
-                sh 'docker run -p 46:80 -d nish1102/gitprofile:latest'
+                sh 'docker run -p 47:80 -d nish1102/gitprofile:latest'
             }
         }
     }
